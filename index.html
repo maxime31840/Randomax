@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Envoyer un Message</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Envoyer un message</h1>
+    <form id="messageForm">
+      <input type="text" id="username" placeholder="Nom d'utilisateur" required />
+      <textarea id="content" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+    <h2>Messages récents</h2>
+    <div id="messagesList"></div>
+
+    <div id="responseMessage"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
