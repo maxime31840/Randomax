@@ -20,16 +20,27 @@
   </header>
   
   <div class="container">
-    <div class="send">Une idée à partager</div>
-    <form id="messageForm">
-      <input type="text" id="username" placeholder="Nom d'utilisateur" required />
-      <textarea id="content" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-    <h2>Messages récents</h2>
-    <div id="messagesList"></div>
+    <div class="main-layout">
+      <div class="left-column">
+        <div class="send">Une idée à partager</div>
+        <form id="messageForm">
+          <input type="text" id="username" placeholder="Nom d'utilisateur" required />
+          <textarea id="content" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+        <h2>Messages récents</h2>
+        <div id="messagesList"></div>
+        <div id="responseMessage"></div>
+      </div>
+      
 
-    <div id="responseMessage"></div>
+      <div class="right-column">
+        <h3>Envie d’aventure ?</h3>
+        <img src="images/montagne1.png" alt="Montagne 1" />
+        <img src="images/randonnee.png" alt="Randonnée 2" />
+        <img src="images/nature.png" alt="Nature 3" />
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
