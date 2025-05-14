@@ -7,7 +7,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: #2d2d22;
+    scroll-behavior: smooth;
   }
 
 header {
@@ -62,11 +63,9 @@ nav ul li a:hover::after {
 
   
   .container {
-    background: white;
+    background: black;
     padding: 20px;
-    max-width: 500px;
     margin: auto;
-    border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
   
@@ -78,12 +77,13 @@ nav ul li a:hover::after {
   form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
   
   input, textarea {
     padding: 10px;
     font-size: 16px;
+    max-width: 500px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
@@ -104,12 +104,31 @@ nav ul li a:hover::after {
     text-align: center;
   }
 
-  #messagesList {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+#messagesList {
+  max-height: 650px; /* hauteur calculée pour environ 5 messages */
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  scroll-behavior: smooth;
+}
+
+/* Optionnel : personnaliser la scrollbar */
+#messagesList::-webkit-scrollbar {
+  width: 8px;
+}
+
+#messagesList::-webkit-scrollbar-thumb {
+  background-color: #2ecc71;
+  border-radius: 4px;
+}
+
+
   
   .message {
     border: 1px solid #ddd;
@@ -137,4 +156,45 @@ nav ul li a:hover::after {
     margin: 4px;
     padding: 4px;
   }
-  
+
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.left-column {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.right-column {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.right-column h3 {
+  color: #2ecc71;
+  margin-bottom: 10px;
+}
+
+.right-column img {
+  max-width: 400px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
