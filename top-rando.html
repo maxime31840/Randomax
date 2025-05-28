@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meilleures randonnées</title>
+    <link rel="stylesheet" href="style/style-top-rando.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html">Randomax</a></h1>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./top-rando.html">Les meilleures randonnées</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="title">
+    <h1>Les meilleures randonnées</h1>
+  </div>
+
+  <section id="filter-bar">
+    <button data-filter="all" class="active">Toutes</button>
+    <button data-filter="facile">Facile</button>
+    <button data-filter="modere">Modérée</button>
+    <button data-filter="difficile">Difficile</button>
+  </section>
+
+  <section id="grid-rando">
+  <a href="https://www.bugeysud-tourisme.fr/decouvrir/le-grand-colombier/panorama-sur-les-alpes/" target="_blank" class="rando-item facile">
+    <img src="/images/rando1.png" alt="Alpes">
+    <div class="rando-content">
+      <h3>Panorama des Alpes</h3>
+      <p>Difficulté : Facile | Région : Alpes</p>
+    </div>
+  </a>
+
+  <a href="https://tourisme-broceliande.bzh/la-foret-de-broceliande/" target="_blank" class="rando-item modere">
+    <img src="/images/rando2.png" alt="Brocéliande">
+    <div class="rando-content">
+      <h3>Forêt de Brocéliande</h3>
+      <p>Difficulté : Modérée | Région : Bretagne</p>
+    </div>
+  </a>
+
+  <a href="https://www.ffrandonnee.fr/randonner/sentiers/gr-34-le-sentier-des-douaniers" target="_blank" class="rando-item difficile">
+    <img src="/images/rando3.png" alt="Sentier douanier">
+    <div class="rando-content">
+      <h3>Sentier des Douaniers</h3>
+      <p>Difficulté : Difficile | Région : Bretagne</p>
+    </div>
+  </a>
+
+  <a href="https://www.parcdesvolcans.fr/" target="_blank" class="rando-item modere">
+    <img src="/images/rando4.png" alt="Volcans">
+    <div class="rando-content">
+      <h3>Volcans d'Auvergne</h3>
+      <p>Difficulté : Modérée | Région : Massif central</p>
+    </div>
+  </a>
+
+  <a href="https://www.lac-annecy.com/" target="_blank" class="rando-item facile">
+    <img src="/images/rando5.png" alt="Lac d'Annecy">
+    <div class="rando-content">
+      <h3>Lac d'Annecy en Famille</h3>
+      <p>Difficulté : Facile | Région : Haute-Savoie</p>
+    </div>
+  </a>
+
+  <a href="https://www.le-gr20.fr/" target="_blank" class="rando-item difficile">
+    <img src="/images/rando6.png" alt="GR20 Corse">
+    <div class="rando-content">
+      <h3>GR20 – L'Épopée Corse</h3>
+      <p>Difficulté : Difficile | Région : Corse</p>
+    </div>
+  </a>
+
+  <a href="https://www.parc-marais-poitevin.fr/" target="_blank" class="rando-item facile">
+  <img src="/images/rando7.png" alt="Marais Poitevin">
+  <div class="rando-content">
+    <h3>Marais Poitevin</h3>
+    <p>Difficulté : Facile | Région : Nouvelle-Aquitaine</p>
+  </div>
+</a>
+
+<a href="https://www.visorando.com/randonnee-cretes-du-vercors-nord/"  target="_blank" class="rando-item modere">
+  <img src="/images/rando8.png" alt="Crêtes du Vercors">
+  <div class="rando-content">
+    <h3>Crêtes du Vercors</h3>
+    <p>Difficulté : Modérée | Région : Auvergne-Rhône-Alpes</p>
+  </div>
+</a>
+
+<a href="https://www.valleedossau.com/le-pic-du-midi-d-ossau.html" target="_blank" class="rando-item difficile">
+  <img src="/images/rando9.png" alt="Pic du Midi d'Ossau">
+  <div class="rando-content">
+    <h3>Pic du Midi d’Ossau</h3>
+    <p>Difficulté : Difficile | Région : Pyrénées</p>
+  </div>
+</a>
+</section>
+
+
+  <script>
+    const filterButtons = document.querySelectorAll('#filter-bar button');
+    const items = document.querySelectorAll('.rando-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('#filter-bar .active').classList.remove('active');
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        items.forEach(item => {
+          item.style.display = (filter === 'all' || item.classList.contains(filter)) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

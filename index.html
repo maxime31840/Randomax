@@ -4,32 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Randomax</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/style-index.css" />
 </head>
 <body>
 
   <header>
-    <h1><a href="./index.html">Randomax</a></h1>
-    <nav>
-      <ul>
-        <li><a href="./index.html">Accueil</a></li>
-        <li><a href="./top-rando.html">Les meilleures randonnées</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h1><a href="index.html">Randomax</a></h1>
+  <nav>
+    <ul>
+      <li><a href="./index.html">Accueil</a></li>
+      <li><a href="./top-rando.html">Les meilleures randonnées</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
   
   <div class="container">
-    <div class="send">Une idée à partager</div>
-    <form id="messageForm">
-      <input type="text" id="username" placeholder="Nom d'utilisateur" required />
-      <textarea id="content" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-    <h2>Messages récents</h2>
-    <div id="messagesList"></div>
+    <div class="main-layout">
+      <div class="left-column">
+        <div class="send">Une idée à partager</div>
+        <form id="messageForm">
+          <input type="text" id="username" placeholder="Nom d'utilisateur" required />
+          <textarea id="content" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
+        </form>
+        <h2>Messages récents</h2>
+        <div id="messagesList"></div>
+        <div id="responseMessage"></div>
+      </div>
+      
 
-    <div id="responseMessage"></div>
+      <div class="right-column">
+      
+        <img src="images/montagne1.png" alt="Montagne 1" />
+        <img src="images/randonnee.png" alt="Randonnée 2" />
+        <img src="images/nature.png" alt="Nature 3" />
+        <img src="images/montagne2.png" alt="Montagne neige">
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

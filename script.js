@@ -55,14 +55,19 @@ async function chargerMessages() {
       return;
     }
 
-    messagesList.innerHTML = "";
+    messagesList.innerText = "";
 
     for (const msg of messages) {
       const div = document.createElement("div");
       div.classList.add("message");
 
       div.innerHTML = `
-        <strong>${msg.username}</strong>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <div id="avatar-${msg.id}" style="width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; background-color: lightgray;">
+            <!-- Avatar will be injected here -->
+          </div>
+          <strong>${msg.username}</strong>
+        </div>
         <small>${new Date(msg.created_at).toLocaleString()}</small><br/>
         <p>${msg.content}</p>
         <button class="like-btn" data-id="${msg.id}">❤️ ${msg.like}</button>
@@ -78,6 +83,7 @@ async function chargerMessages() {
         </div>
       `;
 
+      // Like
       div.querySelector(".like-btn").addEventListener("click", () => {
         likerMessage(msg.id);
       });
@@ -94,7 +100,10 @@ async function chargerMessages() {
       });
 
       messagesList.appendChild(div);
-      await chargerCommentaires(msg.id); 
+
+      ajouterAvatar(msg.username, `avatar-${msg.id}`);
+
+      await chargerCommentaires(msg.id);
     }
   } catch (err) {
     messagesList.innerHTML = `<p style="color:red;">❌ ${err.message}</p>`;
@@ -105,9 +114,7 @@ async function likerMessage(messageId) {
   try {
     const res = await fetch(`${API_BASE}/message/like`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message_id: messageId })
     });
 
@@ -135,7 +142,7 @@ async function chargerCommentaires(messageId) {
       return;
     }
 
-    container.innerHTML = "";
+    container.innerText = "";
     commentaires.forEach(com => {
       const p = document.createElement("p");
       p.innerHTML = `<strong>${com.username}</strong>: ${com.content}`;
@@ -150,9 +157,7 @@ async function ajouterCommentaire(messageId, username, content) {
   try {
     const res = await fetch(`${API_BASE}/comment`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message_id: messageId, username, content })
     });
 
@@ -161,5 +166,22 @@ async function ajouterCommentaire(messageId, username, content) {
     console.log("💬 Commentaire ajouté :", data.message);
   } catch (err) {
     console.error("❌ Erreur commentaire :", err.message);
+  }
+}
+
+function ajouterAvatar(username, imgElementId) {
+  if (!username) return;
+
+  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+  const initials = username.split(' ').map(word => word[0].toUpperCase()).join('');
+
+  const imgElement = document.getElementById(imgElementId);
+  if (imgElement) {
+    imgElement.style.backgroundColor = randomColor;
+    imgElement.innerText = initials;
+    imgElement.style.color = "#fff";
+    imgElement.style.fontWeight = "bold";
+    imgElement.style.fontSize = "18px";
   }
 }
