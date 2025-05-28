@@ -1,4 +1,4 @@
-const API_BASE = "https://api-a1s2.iris-occitanie.fr/api";
+const API_BASE = await fetch("./env.json");
 
 window.addEventListener("DOMContentLoaded", () => {
   chargerMessages();
